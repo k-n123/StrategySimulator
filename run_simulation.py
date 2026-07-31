@@ -2,12 +2,11 @@ import fastf1
 import os
 import math 
 import random 
+import pandas as pd
 
 from model import Model
 from simulation import Simulator
 from strategy import StrategyCreator
-
-from main import saveResults
 
 import argparse
 
@@ -63,7 +62,12 @@ def runSampledMontecarlo(oneStopStrategies, twoStopStrategies, simulator, simula
     return results
 
 
-if os.path.exists("data/" + place) and not force:
+def saveResults(results, model):
+    df = pd.DataFrame(results, columns=['One Stop Time', 'Two Stop Time', 'Difference'])
+    df.to_csv("data/" + model.place + " - " + str(year), index=False)
+
+
+if os.path.exists(output_dir + place) and not force:
     print(f"Data for {place} already exists. Skipping simulation.")
 else:
     print(f"Running simulation for {place} in {year}...")
