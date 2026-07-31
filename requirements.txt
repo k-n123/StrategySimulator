@@ -1,7 +1,7 @@
 fastf1
 pandas
 numpy
-sklearn
+scikit-learn
 matplotlib
 scipy
 itertools 
