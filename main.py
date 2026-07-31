@@ -12,6 +12,8 @@ import matplotlib.pyplot as plt
 import random
 import os
 
+if not os.path.exists('data/cache'):
+    os.makedirs('data/cache')
 fastf1.Cache.enable_cache('data/cache')  # Enable caching to speed up data retrieval
 
 def secondsToTime(seconds):
